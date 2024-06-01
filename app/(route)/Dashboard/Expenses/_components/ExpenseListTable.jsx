@@ -35,32 +35,39 @@ const ExpenseListTable = ({ expenseInfo, refreshdata }) => {
   };
 
   return (
-    <div className='mt-3'>
-    <div className='grid grid-cols-4  bg-slate-200 p-2'>
-      <h2 className='font-bold text-primary '>Name</h2>
-      <h2 className='font-bold text-primary '>Amount</h2>
-      <h2 className='font-bold text-primary '>Date</h2>
-      <h2 className='font-bold text-primary '>Action</h2>
-    </div>
-
-    {expenseInfo && expenseInfo.map((expense, index) => (
-      <div key={index} className='grid grid-cols-4 bg-slate-200 p-2'>
-        <h2 className=''>{expense.name}</h2>
-        <h2 className=''>{expense.amount}</h2>
-        <h2 className=']'>{expense.createdAt}</h2>
-        <h2>
-          <Trash className='text-red-600 ' onClick={() => deleteList(expense)} />
-        </h2>
-      </div>
+<div className='mt-3 shadow-lg overflow-x-auto'>
+  <table className='min-w-full divide-y divide-gray-200'>
+    <thead className='bg-slate-200'>
+      <tr>
+        <th className='font-bold text-primary p-2'>Name</th>
+        <th className='font-bold text-primary p-2'>Amount</th>
+        <th className='font-bold text-primary p-2'>Date</th>
+        <th className='font-bold text-primary p-2'>Action</th>
+      </tr>
+    </thead>
+    <tbody className='bg-white divide-y divide-gray-200'>
+      {expenseInfo && expenseInfo.map((expense, index) => (
+        <tr key={index} className='bg-slate-200'>
+          <td className='p-2'>{expense.name}</td>
+          <td className='p-2'>{expense.amount}</td>
+          <td className='p-2'>{expense.createdAt}</td>
+          <td className='p-2'>
+            <Trash className='text-red-600 ' onClick={() => deleteList(expense)} />
+          </td>
+        </tr>
       ))}
-      
-      {/* Snackbar for displaying messages */}
-      <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
-        <MuiAlert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
-          {snackbarMessage}
-        </MuiAlert>
-      </Snackbar>
-    </div>
+    </tbody>
+  </table>
+  
+<Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
+  <MuiAlert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+    {snackbarMessage}
+  </MuiAlert>
+</Snackbar>
+</div>
+
+
+
   );
   
 };

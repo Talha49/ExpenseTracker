@@ -82,11 +82,11 @@ const ExpensesScreen = ({ params }) => {
 
   return (
     <div className='p-10'>
-      <div className='flex justify-between items-center'>
-        <h2 className='text-2xl font-bold'>My Expenses</h2>
-       <div className='flex gap-2 items-center'>
-       <CoolBackgroundButton className='flex  items-center' onClick={handleDeleteButtonClick}>
-          <Trash size='1.5em' className='text-green-800 mr-2 ' /><span>Delete</span>
+      <div className='md:flex md:justify-between   items-center'>
+        <h2 className='md:text-2xl font-bold text-sm'>My Expenses</h2>
+       <div className='flex gap-2 items-center mt-2'>
+       <CoolBackgroundButton className='flex   items-center ' onClick={handleDeleteButtonClick}>
+          <Trash className='text-green-800 mr-2 ' /><span>Delete</span>
         </CoolBackgroundButton>
         <EditButtonBudget budget ={expense} refreshData={() => getBudgetInfo()}/>
        </div>
